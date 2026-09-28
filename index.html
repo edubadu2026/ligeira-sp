@@ -166,6 +166,12 @@ table.htable{width:100%;border-collapse:collapse;background:#fff;font-family:var
 .down{color:var(--red);font-weight:700}
 .table-scroll{overflow-x:auto}
 
+/* grupo */
+.groups{display:flex;flex-wrap:wrap;gap:.6rem;font-family:var(--sans)}
+.gbtn{font:inherit;font-weight:700;font-size:1.05rem;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:.7rem 1.2rem;border-radius:4px;cursor:pointer}
+.gbtn[aria-pressed="true"]{background:var(--yellow)}
+.gnow{font-family:var(--sans);font-size:.95rem;margin:.8rem 0 0;color:var(--ink-2)}
+.locked-msg{font-family:var(--sans);background:var(--paper-2);padding:1rem 1.25rem;border-radius:4px}
 /* professor */
 .lock{font-family:var(--sans);display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
 .lock input{font:inherit;padding:.5rem .7rem;border:2px solid var(--ink);border-radius:4px;width:12rem}
@@ -278,6 +284,20 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
     <div class="cards" id="cards"></div>
   </section>
 
+  <!-- GRUPO -->
+  <section class="section" id="grupo">
+    <div class="round">
+      <div class="round-head">
+        <h2>Qual é o seu grupo?</h2>
+        <div class="task">Cada grupo trabalha num único aparelho. Escolham o número do grupo antes de começar: as respostas de cada grupo ficam separadas.</div>
+      </div>
+      <div class="groups" id="groups"></div>
+      <p class="gnow" id="gnow" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div id="rounds-locked" class="round"><p class="locked-msg">Escolham o grupo acima para liberar as rodadas.</p></div>
+  <div id="rounds">
   <!-- RODADA 1 -->
   <section class="section" id="rodada-1">
     <div class="round">
@@ -317,7 +337,7 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
     <div class="round">
       <div class="round-head">
         <h2>Rodada 3: o evento</h2>
-        <div class="task">Abram o envelope do seu grupo, só quando o professor autorizar. Diante do acontecimento:
+        <div class="task">Abram o envelope do seu grupo só quando o professor autorizar. Diante do acontecimento:
           <ol>
             <li>Algum stakeholder muda de quadrante? Se muda, movam-no na matriz e expliquem por quê.</li>
             <li>Redistribuam as 40 horas de Beatriz. De quem vocês tiraram tempo?</li>
@@ -343,13 +363,14 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
   <section class="section" id="resumo">
     <div class="round">
       <div class="round-head">
-        <h2>Antes e depois</h2>
+        <h2 id="sum-title">Antes e depois</h2>
         <p class="note">Esta é a tela para a apresentação de dois minutos do grupo.</p>
       </div>
       <div id="summary"></div>
     </div>
   </section>
 
+  </div>
   <!-- PROFESSOR -->
   <section class="section hidden" id="professor">
     <div class="round">
@@ -433,10 +454,21 @@ const EVENTS = [
 ];
 
 /* ---------- estado ---------- */
-const KEY = "ligeira-modulo-1";
-let state = {r1:{}, r2:{}, ev:null, r3:{}, r3h:{}, unlocked:false};
-try{ const raw = localStorage.getItem(KEY); if(raw){ state = Object.assign(state, JSON.parse(raw)); } }catch(e){}
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+const BASE = "ligeira-modulo-1";
+let group = null;
+try{ const g = localStorage.getItem(BASE+"-grupo"); if(g) group = +g; }catch(e){}
+let unlocked = false;
+try{ unlocked = localStorage.getItem(BASE+"-prof")==="1"; }catch(e){}
+function blank(){ return {r1:{}, r2:{}, ev:null, r3:{}, r3h:{}}; }
+let state = blank();
+function load(){
+  state = blank();
+  if(!group) return;
+  try{ const raw = localStorage.getItem(`${BASE}-g${group}`); if(raw) state = Object.assign(blank(), JSON.parse(raw)); }catch(e){}
+}
+function save(){ if(!group) return; try{ localStorage.setItem(`${BASE}-g${group}`, JSON.stringify(state)); }catch(e){} }
+function saveProf(){ try{ localStorage.setItem(BASE+"-prof", unlocked?"1":"0"); }catch(e){} }
+load();
 const sel = {r1:null, r3:null};
 const byId = id => S.find(s=>s.id===id);
 
@@ -484,7 +516,7 @@ function renderMatrix(key){
     b.type="button"; b.className="chip"; b.draggable=true; b.dataset.id=s.id;
     b.innerHTML = `<span aria-hidden="true">${s.e}</span> ${s.n}`;
     if(sel[key]===s.id){ b.classList.add("sel"); b.setAttribute("aria-pressed","true"); } else b.setAttribute("aria-pressed","false");
-    if(key==="r1" && state.unlocked && q) b.classList.add(q===s.q?"ok":"nok");
+    if(key==="r1" && unlocked && q) b.classList.add(q===s.q?"ok":"nok");
     if(key==="r3" && q && state.r1[s.id] && q!==state.r1[s.id]) b.classList.add("sel");
     b.addEventListener("click", e=>{ e.stopPropagation(); sel[key] = sel[key]===s.id ? null : s.id; renderMatrix(key); });
     b.addEventListener("dragstart", e=>{ e.dataTransfer.setData("text/plain", s.id); });
@@ -523,17 +555,18 @@ function renderHours(key){
 
 /* ---------- envelopes ---------- */
 function renderEnvelopes(){
-  document.getElementById("envelopes").innerHTML = EVENTS.map(ev=>`
-    <button type="button" class="env ${state.ev===ev.g?"chosen":""}" data-g="${ev.g}">
-      <strong>Grupo ${ev.g}</strong><span>${state.ev===ev.g?"Envelope aberto":"Envelope fechado"}</span></button>`).join("");
-  document.querySelectorAll(".env").forEach(b=>b.addEventListener("click",()=>{
-    const g=+b.dataset.g;
-    if(state.ev && state.ev!==g && !confirm("Trocar de envelope? A matriz e as horas desta rodada serão mantidas.")) return;
-    state.ev=g;
+  const box=document.getElementById("envelopes");
+  if(!group){ box.innerHTML=""; return; }
+  const opened = state.ev===group;
+  box.innerHTML = `<button type="button" class="env ${opened?"chosen":""}" id="env-btn" ${opened?"disabled":""}>
+      <strong>Envelope do Grupo ${group}</strong><span>${opened?"Envelope aberto":"Toque para abrir"}</span></button>`;
+  if(!opened) document.getElementById("env-btn").addEventListener("click",()=>{
+    if(!confirm("Abrir o envelope agora? Façam isso só quando o professor autorizar.")) return;
+    state.ev=group;
     if(Object.keys(state.r3).length===0) state.r3 = Object.assign({}, state.r1);
     if(Object.keys(state.r3h).length===0) state.r3h = Object.assign({}, state.r2);
     save(); renderEvent();
-  }));
+  });
 }
 function renderEvent(){
   renderEnvelopes();
@@ -571,7 +604,7 @@ function renderSummary(){
 
 /* ---------- gabarito e notas ---------- */
 function renderAnswers(){
-  if(!state.unlocked) return;
+  if(!unlocked) return;
   document.getElementById("lock").classList.add("hidden");
   const a=document.getElementById("answers"); a.classList.remove("hidden");
   a.innerHTML = `<h3>Gabarito</h3><p class="note">Critério: o poder mede quanto a Ligeira depende do stakeholder; o interesse, quanto a vida dele depende do que a Ligeira faz. Os stakeholders em verde na matriz acima estão na posição do gabarito; em vermelho, não. Nenhum stakeholder ficou em Monitorar: isso diz algo sobre a Ligeira?</p>
@@ -582,13 +615,13 @@ function renderAnswers(){
   document.getElementById("prof-notes").innerHTML = `<div class="table-scroll"><table><thead><tr><th>Evento</th><th>Movimento esperado</th><th>Ponto de discussão</th></tr></thead><tbody>` +
    EVENTS.map(e=>`<tr><td>${e.g}. ${e.t}</td><td>${e.m}</td><td>${e.d}</td></tr>`).join("") + `</tbody></table></div>
    <div class="row-actions"><button class="btn ghost" type="button" id="relock">Fechar o gabarito</button></div>`;
-  document.getElementById("relock").addEventListener("click",()=>{ state.unlocked=false; save(); location.reload(); });
+  document.getElementById("relock").addEventListener("click",()=>{ unlocked=false; saveProf(); location.reload(); });
   renderMatrix("r1");
 }
 document.getElementById("show-lock").addEventListener("click",()=>{ const l=document.getElementById("lock"); l.classList.toggle("hidden"); if(!l.classList.contains("hidden")) document.getElementById("code").focus(); });
 function tryUnlock(){
   const v=document.getElementById("code").value.trim();
-  if(v===PROF_CODE){ state.unlocked=true; save(); renderAnswers(); }
+  if(v===PROF_CODE){ unlocked=true; saveProf(); renderAnswers(); }
   else document.getElementById("lock-err").textContent="Código incorreto. Confira com o professor.";
 }
 document.getElementById("unlock").addEventListener("click", tryUnlock);
@@ -604,7 +637,7 @@ document.querySelectorAll("[data-reset]").forEach(b=>b.addEventListener("click",
 /* ---------- navegação ---------- */
 function route(){
   const v = location.hash.replace("#","") || "inicio";
-  const view = v.startsWith("capitulo-1") || ["stakeholders","rodada-1","rodada-2","rodada-3","resumo","professor"].includes(v) ? "capitulo-1" : "inicio";
+  const view = v.startsWith("capitulo-1") || ["stakeholders","grupo","rodada-1","rodada-2","rodada-3","resumo","professor"].includes(v) ? "capitulo-1" : "inicio";
   document.querySelectorAll(".view").forEach(el=>el.classList.toggle("hidden", el.id!==`view-${view}`));
   document.querySelectorAll(".top nav a").forEach(a=>{ if(a.dataset.view===view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   if(v==="inicio"||v==="capitulo-1") window.scrollTo(0,0); else { const t=document.getElementById(v); if(t) t.scrollIntoView(); }
@@ -612,8 +645,24 @@ function route(){
 window.addEventListener("hashchange", route);
 
 /* ---------- início ---------- */
+function renderGroups(){
+  document.getElementById("groups").innerHTML = [1,2,3,4,5].map(n=>`<button type="button" class="gbtn" data-g="${n}" aria-pressed="${group===n}">Grupo ${n}</button>`).join("");
+  document.querySelectorAll(".gbtn").forEach(b=>b.addEventListener("click",()=>{
+    const n=+b.dataset.g; if(n===group) return;
+    if(group && !confirm(`Trocar para o Grupo ${n}? As respostas do Grupo ${group} continuam salvas neste aparelho.`)) return;
+    group=n; try{ localStorage.setItem(BASE+"-grupo", String(n)); }catch(e){}
+    load(); sel.r1=null; sel.r3=null; renderAll();
+  }));
+  document.getElementById("gnow").textContent = group ? `Vocês estão trabalhando como Grupo ${group}.` : "";
+  document.getElementById("rounds").classList.toggle("hidden", !group);
+  document.getElementById("rounds-locked").classList.toggle("hidden", !!group);
+  document.getElementById("sum-title").textContent = group ? `Antes e depois: Grupo ${group}` : "Antes e depois";
+}
+function renderAll(){
+  renderGroups(); renderMatrix("r1"); renderHours("r2"); renderEvent(); renderSummary(); renderAnswers();
+}
 buildMatrix("r1"); buildMatrix("r3");
-renderMatrix("r1"); renderHours("r2"); renderEvent(); renderSummary(); renderAnswers();
+renderAll();
 route();
 </script>
 </body>
