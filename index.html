@@ -209,6 +209,55 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
   .matrix{grid-template-columns:1.6rem 1fr}
   .hero svg.route{opacity:.4}
 }
+/* ---------- capítulo 3 ---------- */
+.chap-head.c3{background-image:none}
+.chap-head.c3::before{display:none}
+.nums{max-width:1180px;margin:1.5rem auto 0;padding:0 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.num-card{border-top:4px solid var(--ink);padding-top:.8rem}
+.num-card b{display:block;font-family:var(--serif);font-weight:750;font-size:clamp(2.6rem,6vw,3.6rem);line-height:1}
+.num-card span{font-family:var(--sans);font-size:.95rem;color:var(--ink-2);display:block;margin-top:.2rem}
+.num-card.zero b{color:var(--red)}
+.splitwrap{max-width:var(--measure);margin:1.5rem auto 0;padding:0 1.25rem;font-family:var(--sans)}
+.splitbar{display:flex;height:3.2rem;border:2px solid var(--ink);overflow:hidden}
+.splitbar i{display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;font-size:.95rem;text-align:center}
+.splitbar .a{background:var(--yellow);width:40%}
+.splitbar .b{background:#fff;width:60%;color:var(--ink-2)}
+.splitlabels{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-2);margin-top:.5rem;gap:1rem}
+.checkout{max-width:var(--measure);margin:1.5rem auto 0;padding:0 1.25rem;font-family:var(--sans)}
+.copt{background:#fff;border:2px solid var(--rule);padding:.9rem 1.1rem;margin-bottom:.7rem;display:flex;gap:.8rem;align-items:flex-start}
+.copt.green{border-color:var(--green);background:#F1F7F3}
+.copt .ico{font-size:1.3rem;line-height:1.2}
+.copt b{display:block;font-size:1.02rem}
+.copt .when{font-size:.92rem;color:var(--ink-2)}
+.copt .fine{display:block;font-size:.82rem;color:var(--ink-2);margin-top:.25rem}
+.months{max-width:var(--measure);margin:1.5rem auto 0;padding:0 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;font-family:var(--sans)}
+.mcard{background:#fff;border-left:6px solid var(--ink);padding:1rem 1.1rem}
+.mcard .mname{font-weight:700;font-size:1.05rem}
+.mcard .mbairros{font-size:.9rem;color:var(--ink-2);margin:.15rem 0 .6rem}
+.mcard .mlost{font-family:var(--serif);font-weight:750;font-size:2.2rem;line-height:1;color:var(--red)}
+.mcard .mlostlab{font-size:.88rem;color:var(--ink-2)}
+.facts{max-width:var(--measure);margin:1.5rem auto 0;padding:0 1.25rem;font-family:var(--sans)}
+.fact{display:grid;grid-template-columns:minmax(6.5rem,8rem) 1fr;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+.fact b{font-family:var(--serif);font-weight:750;font-size:1.7rem;line-height:1}
+.fact span{font-size:.98rem;color:var(--ink-2)}
+.problem{max-width:var(--measure);margin:2rem auto 0;padding:1.6rem 1.5rem;background:var(--ink);color:#fff}
+.problem p{margin:0 0 1em;font-size:1.1rem}
+.problem p:last-child{margin:0}
+.problem .q{font-family:var(--serif);font-style:italic;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.15;color:var(--yellow)}
+.balizas{max-width:var(--measure);margin:1.5rem auto 0;padding:0 1.25rem;font-family:var(--sans)}
+.baliza{background:#fff;border-left:6px solid var(--yellow);padding:.9rem 1.1rem;margin-bottom:.8rem}
+.baliza b{display:block;font-size:1.02rem;margin-bottom:.2rem}
+.baliza span{font-size:.95rem;color:var(--ink-2)}
+.locked3{max-width:var(--measure);margin:0 auto;padding:0 1.25rem}
+.gabwrap{background:#fff;border-top:4px solid var(--ink);padding:1.2rem 1.4rem;margin-top:1rem}
+.gabwrap h3{font-family:var(--serif);font-size:1.5rem;font-weight:750;margin:1.6rem 0 .4rem}
+.gabwrap h3:first-child{margin-top:0}
+.gabwrap p{margin:0 0 1em;font-size:1.05rem}
+.gabwrap p:last-child{margin:0}
+@media (max-width:640px){
+  .splitbar i{font-size:.8rem}
+  .fact{grid-template-columns:1fr}
+}
 @media print{.top,.row-actions,.lock{display:none}}
 </style>
 </head>
@@ -221,7 +270,7 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
       <a href="#inicio" data-view="inicio">Início</a>
       <a href="#capitulo-1" data-view="capitulo-1">Cap. 1: Stakeholders</a>
       <a href="#capitulo-2" data-view="capitulo-2">Cap. 2: Valores</a>
-      <span>Cap. 3: O E</span>
+      <a href="#capitulo-3" data-view="capitulo-3">Cap. 3: O E</a>
       <span>Cap. 4: O S</span>
       <span>Cap. 5: O G</span>
     </nav>
@@ -266,8 +315,8 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
       <h2>Capítulos</h2>
       <ol class="chapters">
         <li class="open"><span class="cn">Aula 1, Capitalismo 4.0</span><a class="ct" href="#capitulo-1">Os stakeholders da Ligeira</a></li>
-        <li class="open"><span class="cn">Aula 2, Valores</span><a class="ct" href="#capitulo-2">O preço dos valores</a></li>
-        <li><span class="cn">Aula 3, O E do ESG</span><span class="ct soon">Em breve</span></li>
+        <li class="open"><span class="cn">Aula 2, Valores</span><a class="ct" href="#capitulo-2">Os fundamentos do ESG</a></li>
+        <li class="open"><span class="cn">Aula 3, O E do ESG</span><a class="ct" href="#capitulo-3">O desafio ambiental</a></li>
         <li><span class="cn">Aula 4, O S do ESG</span><span class="ct soon">Em breve</span></li>
         <li><span class="cn">Aula 5, O G do ESG</span><span class="ct soon">Em breve</span></li>
       </ol>
@@ -400,13 +449,13 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
   <section class="chap-head c2">
     <div class="in">
       <p class="num">Capítulo 2, Aula 2: Valores</p>
-      <h1>O preço dos valores</h1>
+      <h1>Os fundamentos do ESG</h1>
     </div>
   </section>
 
   <section class="section">
     <div class="prose">
-      <p class="lede">Beatriz voltou da primeira aula do MBA com a matriz de poder e interesse na cabeça e um problema na mesa: mapear stakeholders não quitava a dívida com o banco. O crédito continuava caro, as garantias continuavam sendo os apartamentos dos dois sócios, e o caixa não aguentaria outro ano apertado.</p>
+      <p class="lede">No começo de 2026, a Ligeira tinha um problema na mesa. O crédito continuava caro, as garantias continuavam sendo os apartamentos dos dois sócios, e o caixa não aguentaria outro ano apertado.</p>
       <p>Foi nessa época que apareceu <strong>Tiago Medeiros</strong>. Aos 47 anos, depois de quinze anos como diretor de operações de uma grande rede de varejo, ele vivia de investir em pequenas empresas em que gostava de pôr a mão na massa. Conhecia logística por dentro, falava a língua dos grandes clientes e tinha o telefone dos diretores certos. Propôs aportar <strong>R$ 2 milhões por 25%</strong> da Ligeira.</p>
       <p>A conta fechava com folga: R$ 1,2 milhão quitaram a linha de capital de giro, os apartamentos de Beatriz e Diego saíram da garantia e o restante foi para o caixa. Tiago não quis conselho. Uma empresa de 38 empregados, disse, não precisa de conselho, precisa de gente que resolva. Ganhou uma mesa no galpão e uma diretoria de Expansão e Relacionamento. No acordo de sócios, as decisões passaram a ser tomadas por maioria do capital. Tiago pediu também que o contrato detalhasse regras de saída dos sócios. “Formalidades”, disse. Diego leu as primeiras páginas.</p>
       <p>Nos primeiros meses, Tiago entregou o que prometeu. Renegociou o contrato do galpão, abriu uma conversa direta com a diretoria da Lume e resolveu em uma semana um problema que Beatriz carregava havia meses. Beatriz, por sua vez, aproveitou a nova fase para publicar um Código de Conduta, em março, e lançar, três semanas atrás, um canal de denúncias. Ninguém na empresa tinha motivo para desconfiar de Tiago. Nem os próprios sócios.</p>
@@ -447,9 +496,228 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
   </section>
 
   <section class="section">
-    <div class="prose"><p class="note">Ligeira, Lume, VoltFrota e todos os personagens são fictícios. Os valores em reais, os percentuais e os prazos deste capítulo são ilustrativos. A lei de igualdade salarial citada no capítulo é real: Lei 14.611/2023.</p></div>
+    <div class="prose"><p class="note">Ligeira, Lume, Bandeirante Frotas e todos os personagens são fictícios. Os valores em reais, os percentuais e os prazos deste capítulo são ilustrativos. A lei de igualdade salarial citada no capítulo é real: Lei 14.611/2023.</p></div>
   </section>
 
+</div>
+
+<!-- =================== CAPÍTULO 3 =================== -->
+<div id="view-capitulo-3" class="view hidden">
+  <section class="chap-head c3">
+    <div class="in">
+      <p class="num">Capítulo 3, Aula 3: O E do ESG</p>
+      <h1>O desafio ambiental</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><h2>Primeiro, o que a Ligeira faz todo dia</h2></div>
+    <div class="nums">
+      <div class="num-card"><b>3.500</b><span>entregas por dia</span></div>
+      <div class="num-card"><b>450</b><span>entregadores cadastrados</span></div>
+      <div class="num-card"><b>8</b><span>entregas por dia, em média, por entregador</span></div>
+      <div class="num-card zero"><b>0</b><span>veículos elétricos</span></div>
+    </div>
+    <div class="prose" style="margin-top:2rem">
+      <p>A frota da Ligeira é inteiramente terceirizada e inteiramente <strong>a combustão</strong>.</p>
+    </div>
+    <div class="splitwrap">
+      <div class="splitbar" role="img" aria-label="Das 3.500 entregas por dia, 1.400 são da Lume e 2.100 de 25 clientes menores">
+        <i class="a">1.400 · Lume</i>
+        <i class="b">2.100 · outros 25 clientes</i>
+      </div>
+      <div class="splitlabels">
+        <span><strong>40% da receita</strong> vem da Lume</span>
+        <span>nenhum dos outros passa de 4%</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose">
+      <h2>O que mudou</h2>
+      <p>Em março, a Lume lançou uma campanha nova. Na tela de pagamento do site, o cliente passou a escolher entre duas formas de entrega:</p>
+    </div>
+    <div class="checkout">
+      <div class="copt green">
+        <span class="ico" aria-hidden="true">🌱</span>
+        <span><b>Entrega Limpa</b><span class="when">chega em até 4 dias</span>
+        <span class="fine">Sua compra chega sem fumaça e sem barulho, num veículo elétrico.</span></span>
+      </div>
+      <div class="copt">
+        <span class="ico" aria-hidden="true">⚡</span>
+        <span><b>Entrega expressa</b><span class="when">chega amanhã</span></span>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:2rem">
+      <p>A Entrega Limpa não aparece para todo mundo. Ela só aparece quando o endereço do cliente está numa região onde a Lume consegue cumprir a promessa. Em março, eram <strong>três bairros</strong>. Em abril, <strong>sete</strong>.</p>
+      <p>Quem faz essas entregas não é a Ligeira. É uma das outras duas empresas de logística que atendem a Lume, e que começou a trocar a frota no ano passado.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><h2>O e-mail</h2></div>
+    <article class="event" style="margin-left:auto;margin-right:auto">
+      <h3>De: Rafael Tavares, diretor de logística da Lume</h3>
+      <p>“Beatriz, você já viu a campanha. O cliente escolhe, e a gente roteia conforme a escolha dele. Não vou pedir meta nem prazo a vocês. Só queria que soubessem o que está acontecendo, para não serem pegos de surpresa daqui a um ano.”</p>
+    </article>
+    <div class="prose">
+      <p>Não houve exigência. Não houve ultimato. Não houve contrato novo.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><h2>O que está acontecendo com o volume</h2></div>
+    <div class="months">
+      <div class="mcard">
+        <div class="mname">Março</div>
+        <div class="mbairros">3 bairros com Entrega Limpa</div>
+        <div class="mlost">120</div>
+        <div class="mlostlab">entregas por dia que a Ligeira deixou de fazer</div>
+      </div>
+      <div class="mcard">
+        <div class="mname">Abril</div>
+        <div class="mbairros">7 bairros com Entrega Limpa</div>
+        <div class="mlost">260</div>
+        <div class="mlostlab">entregas por dia que a Ligeira deixou de fazer</div>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:2rem">
+      <p>A Ligeira não perdeu a Lume. Continua entregando, continua faturando, continua sendo fornecedora. Só que de uma fatia que diminui a cada mês em que a concorrente cobre um bairro novo.</p>
+      <p class="pull">Não existe o dia em que a Ligeira perde a Lume. Existe o mês em que ela percebe que perdeu.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><h2>O que a Ligeira tem</h2></div>
+    <div class="facts">
+      <div class="fact"><b>R$ 800 mil</b><span>em caixa — o que sobrou do aporte de Tiago Medeiros, e o dinheiro que paga a folha quando o mês aperta</span></div>
+      <div class="fact"><b>15%</b><span>dos entregadores deixam a empresa todo mês</span></div>
+      <div class="fact"><b>Nenhum</b><span>veículo próprio: toda a frota é terceirizada</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><h2>O problema</h2></div>
+    <div class="problem">
+      <p>Ninguém está exigindo nada da Ligeira. Não há meta a cumprir, prazo a vencer nem relatório a entregar.</p>
+      <p>Há um cliente que representa 40% da receita migrando, pedido a pedido, para quem tem veículo elétrico. E há R$ 800 mil em caixa.</p>
+      <p class="q">O que vocês vão fazer?</p>
+    </div>
+  </section>
+
+  <section class="section" id="balizas">
+    <div class="round-head prose">
+      <h2>O que a proposta de vocês precisa dizer</h2>
+    </div>
+    <div class="balizas">
+      <div class="baliza"><b>Quantas entregas por dia ela recupera</b><span>Um número, não uma intenção. Das 1.400 entregas diárias da Lume, quantas voltam a sair pela Ligeira com a solução de vocês. Se a proposta cobre só parte da operação, digam qual parte e por quê.</span></div>
+      <div class="baliza"><b>Quantos veículos isso exige</b><span>O tipo de veículo e quantos. Para chegar a esse número, é preciso estimar quantas entregas cada veículo faz por dia. A média da empresa é 8 por entregador, mas nada obriga a solução de vocês a trabalhar com essa média.</span></div>
+      <div class="baliza"><b>Quanto custa, em duas linhas</b><span>O desembolso de entrada, se houver, e o custo que passa a existir todo mês. São números diferentes e decidem coisas diferentes.</span></div>
+      <div class="baliza"><b>Quem paga</b><span>A empresa, o cliente ou o entregador. Se a conta for parcialmente de alguém que não está nesta sala, digam quanto e por quê.</span></div>
+      <div class="baliza"><b>Quando a primeira entrega limpa acontece</b><span>Não a data do plano pronto: a data em que o primeiro pacote sai num veículo sem fumaça. E depois, em quantos meses a solução chega ao tamanho que vocês propuseram.</span></div>
+      <div class="baliza"><b>O que faria vocês pararem</b><span>Escolham um número e um prazo que, se não forem atingidos, mostram que a solução não está funcionando. Quem não define isso antes só descobre o erro quando o dinheiro já acabou.</span></div>
+    </div>
+
+    <div class="round-head prose" style="margin-top:2.5rem">
+      <h2>O que não dá para ignorar</h2>
+    </div>
+    <div class="balizas">
+      <div class="baliza"><b>Os R$ 800 mil são a reserva da folha</b><span>É o dinheiro que paga 38 salários nos meses em que o caixa aperta. Gastá-lo não é proibido, mas precisa ser decidido de olhos abertos, e dito na proposta.</span></div>
+      <div class="baliza"><b>A Ligeira não tem veículo, oficina, mecânico nem ponto de recarga</b><span>O que existe hoje é um galpão de triagem na Barra Funda e um aplicativo. Qualquer veículo que entre na operação traz junto manutenção, energia, guarda e seguro.</span></div>
+      <div class="baliza"><b>15% dos entregadores deixam a empresa todo mês</b><span>São cerca de 68 pessoas por mês saindo e outras tantas entrando, com duas semanas para recrutar e treinar cada uma. Qualquer arranjo que dependa de a mesma pessoa continuar ali daqui a um ano precisa explicar como sobrevive a isso.</span></div>
+      <div class="baliza"><b>O entregador ganha por corrida</b><span>Não é empregado, não tem salário fixo, e a maioria roda também para outras plataformas. Ele escolhe onde trabalhar todo dia.</span></div>
+      <div class="baliza"><b>O relógio</b><span>Março foram 120 entregas por dia, abril foram 260. A solução precisa estar funcionando antes que a conta chegue ao fim, e vocês é que vão estimar quando isso acontece.</span></div>
+      <div class="baliza"><b>A Lume não pediu nada</b><span>Não há contrato novo a cumprir nem interlocutor obrigado a responder. O que existe é uma empresa que precisa de quem entregue nos bairros que ela quer abrir.</span></div>
+    </div>
+
+    <div class="round-head prose" style="margin-top:2.5rem">
+      <h2>O que vale pesquisar</h2>
+      <p>O grupo pode pesquisar no celular.</p>
+    </div>
+    <div class="balizas">
+      <div class="baliza"><b>Preços</b><span>Quanto custa hoje, no Brasil, uma moto elétrica usada para entrega e uma bicicleta elétrica de carga. Anotem a fonte e a data.</span></div>
+      <div class="baliza"><b>Formas de pagar</b><span>Se essas máquinas são vendidas, alugadas ou financiadas, e em que condições. Há diferença grande entre comprar e ter disponível.</span></div>
+      <div class="baliza"><b>Autonomia e recarga</b><span>Quantos quilômetros cada tipo roda por carga, quanto tempo leva para carregar e se a bateria sai do veículo. Isso decide quantas entregas por dia são possíveis.</span></div>
+      <div class="baliza"><b>O que já existe</b><span>Empresas de entrega no Brasil que fizeram essa troca, o que usaram e o que deu certo ou errado. Dois ou três exemplos reais valem mais que uma estimativa.</span></div>
+      <div class="baliza"><b>O que a cidade está preparando</b><span>Regras de circulação, licenciamento e incentivos para veículos elétricos em São Paulo, hoje e no horizonte próximo.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><p class="note">Ligeira, Lume, Bandeirante Frotas e todos os personagens são fictícios. Os valores em reais, os percentuais e os prazos deste capítulo são ilustrativos.</p></div>
+  </section>
+
+  <section class="section" id="gabarito">
+    <div class="round">
+      <div class="round-head"><h2>Gabarito</h2></div>
+      <div class="locked3">
+        <div class="row-actions"><button class="btn ghost" type="button" id="abrir-gab">Abrir o gabarito</button></div>
+        <div class="lock hidden" id="lock-gab">
+          <label for="cod-gab">Código do professor</label>
+          <input id="cod-gab" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+          <button class="btn" type="button">Abrir</button>
+          <span class="err" id="err-gab" role="alert"></span>
+        </div>
+        <div class="gabwrap hidden" id="gabarito-3">
+          <h3>O caminho da Ligeira</h3>
+          <p>A Ligeira deixou de fazer 120 entregas por dia em março e 260 em abril. Nesse ritmo, o cliente que responde por 40% da receita se esvai em pouco mais de um ano. Qualquer plano precisa caber nesse prazo.</p>
+          <p>Com 3.500 entregas por dia, cerca de 1,1 milhão por ano, e R$ 9,5 milhões de faturamento, cada entrega vale em torno de <strong>R$ 8,70</strong>. As 260 entregas diárias já perdidas equivalem a aproximadamente <strong>R$ 700 mil por ano</strong>. É contra esse número que o investimento se dimensiona.</p>
+
+          <h3>Pedir à Lume o calendário dos bairros</h3>
+          <p>A Lume liga a Entrega Limpa onde tem quem entregue, e cada bairro sem cobertura é uma venda que ela não consegue fazer. Ela quer mais oferta e informará a ordem e as datas. Com isso, a Ligeira trabalha com um mapa e um calendário, em vez de uma estimativa de percentual.</p>
+
+          <h3>Concentrar a capacidade nos bairros densos</h3>
+          <p>As 8 entregas diárias por entregador são uma média puxada para baixo pelas rotas longas. Num bairro central e adensado, as entregas são curtas e próximas umas das outras, e um único veículo rende várias vezes mais. Eletrificar os bairros que a Lume vai abrir cobre a demanda com uma fração dos veículos que uma conta de percentual sobre a operação inteira exigiria.</p>
+
+          <h3>Começar por bicicleta elétrica de carga</h3>
+          <p>Roupa é pacote pequeno e leve. Em bairro denso, a bicicleta elétrica de carga faz o serviço: custa uma fração de uma moto, não exige habilitação nem emplacamento, carrega em tomada comum e tem bateria removível. A moto elétrica entra depois, para as rotas que a bicicleta não alcança.</p>
+
+          <h3>Alugar os veículos</h3>
+          <p>A locação converte o investimento em custo mensal, dimensionado ao volume que de fato migrar, e reversível se a migração desacelerar. Evita depreciação, manutenção, seguro e risco de roubo numa empresa sem oficina e sem gestão de frota.</p>
+
+          <h3>Manter o veículo com a operação</h3>
+          <p>O veículo elétrico pertence à Ligeira e é entregue ao entregador por turno, como ferramenta de trabalho. Quando o entregador sai, a bicicleta fica e o próximo a usa no dia seguinte. Com 15% de rotatividade mensal, é o único arranjo em que o ativo permanece na operação. Também evita endividar em milhares de reais quem recebe por corrida.</p>
+
+          <h3>Negociar volume garantido com a Lume</h3>
+          <p>A proposta a levar ao Rafael: a Ligeira monta capacidade elétrica nos bairros que a Lume quiser, na ordem que a Lume quiser, desde que a Lume garanta volume mínimo nesses bairros por doze meses. Volume garantido vira previsibilidade, e previsibilidade é o que permite assinar um contrato de locação sem comprometer o caixa.</p>
+
+          <h3>Piloto de 60 dias antes da escala</h3>
+          <p>Um bairro, oito a dez bicicletas elétricas, dois meses. Mede-se quantas entregas um veículo elétrico faz por dia naquele bairro, quanto custa cada entrega, como o entregador reage e o que acontece com a rotatividade entre quem recebe o veículo da empresa. Com esses números, a decisão de escalar passa a ser cálculo.</p>
+
+          <h3>Três coisas a evitar</h3>
+          <p><strong>Comprometer o caixa.</strong> Os R$ 800 mil pagam a folha quando o mês aperta. O plano precisa caber em desembolso mensal.</p>
+          <p><strong>Comprar frota.</strong> Imobiliza capital num ativo que desvaloriza, numa operação que pode mudar de forma em um ano.</p>
+          <p><strong>Transferir o veículo para o entregador.</strong> Exigir ou financiar o veículo de quem ganha por corrida resolve a conta da empresa criando duas classes de entregador dentro da mesma operação, e o problema reaparece na forma de rotatividade e de conflito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="segredo">
+    <div class="round">
+      <div class="round-head"><h2>Segredo</h2></div>
+      <div class="locked3">
+        <div class="row-actions"><button class="btn ghost" type="button" id="abrir-seg">Abrir o segredo</button></div>
+        <div class="lock hidden" id="lock-seg">
+          <label for="cod-seg">Código do professor</label>
+          <input id="cod-seg" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+          <button class="btn" type="button">Abrir</button>
+          <span class="err" id="err-seg" role="alert"></span>
+        </div>
+        <div class="gabwrap hidden" id="segredo-3">
+          <h3>Por que a Lume está fazendo isso</h3>
+          <p>A Lume não acordou preocupada com o planeta.</p>
+          <p>Nos últimos três anos, ela perdeu participação de mercado para plataformas asiáticas de moda que vendem peças semelhantes por uma fração do preço, com frete subsidiado e catálogo renovado toda semana. A Lume não tem como vencer no preço. Decidiu disputar em outro terreno: marca brasileira, produção rastreada, entrega limpa.</p>
+          <p>Para financiar essa virada — tecnologia, estoque, marketing — a Lume tomou um empréstimo de longo prazo com um banco.</p>
+          <p>E o contrato desse empréstimo tem uma cláusula: a taxa de juros cai se a Lume cumprir metas ambientais acordadas, e sobe se não cumprir. Uma dessas metas é a eletrificação da entrega na capital.</p>
+          <p>É por isso que Rafael Tavares acompanha bairro a bairro, mês a mês. Não é campanha de marketing com prazo elástico. É o custo da dívida da Lume, revisado a cada período, com base num indicador que depende de fornecedores que ela não controla.</p>
+          <p class="pull" style="font-size:1.3rem;margin:1.2rem 0">A pressão que chegou à Ligeira não começou na Lume. Começou no banco que emprestou à Lume.</p>
+          <p>E ela não para aí: a mesma lógica desce um degrau de cada vez. O banco cobra da Lume. A Lume precisa de quem entregue. A Ligeira precisa de quem pilote. No fim da fila está um entregador que ganha por corrida e não participou de nenhuma dessas conversas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 </main>
@@ -498,9 +766,9 @@ const S = [
  {id:"tech", e:"⚙️", n:"Equipe de tecnologia", q:"AP_BI",
   t:"<strong>6 desenvolvedores</strong> que mantêm o aplicativo e o algoritmo. Recebem com frequência contatos de recrutadores. No último ano, <strong>dois saíram</strong> para empresas maiores, com salários até <strong>40% mais altos</strong>, e a reposição levou quatro meses.",
   j:"Reposição de quatro meses; eles têm ofertas melhores no mercado."},
- {id:"volt", e:"🚐", n:"VoltFrota", q:"AP_BI",
-  t:"Locadora que fornece <strong>12 vans elétricas</strong> para as entregas volumosas. É uma das poucas empresas da região que oferecem vans elétricas com recarga incluída. Sua carteira é dominada por grandes varejistas, e a Ligeira é uma cliente pequena.",
-  j:"Poucas alternativas de vans elétricas; a Ligeira é cliente pequena."},
+ {id:"frotas", e:"🚐", n:"Bandeirante Frotas", q:"AP_BI",
+  t:"Locadora que fornece <strong>12 vans</strong> para as entregas volumosas. É uma das poucas locadoras da região que aluga sem exigir garantia adicional e aceita pagamento mensal, condição de que a Ligeira depende desde que saiu do aperto bancário. Sua carteira é dominada por grandes varejistas, e a Ligeira é uma cliente pequena.",
+  j:"Poucas alternativas nas condições de pagamento que a Ligeira sustenta; a Ligeira é cliente pequena."},
  {id:"prefeitura", e:"🏛️", n:"Prefeitura de São Paulo", q:"AP_BI",
   t:"Define as regras de circulação de veículos de carga, licencia o galpão e regula o serviço de motofrete. Estuda restringir veículos a combustão no centro expandido. A Ligeira é uma entre milhares de empresas de logística da cidade.",
   j:"Pode inviabilizar a operação; a Ligeira é uma entre milhares."},
@@ -518,8 +786,8 @@ const EVENTS = [
   m:"Associação: de baixo para alto poder.", d:"Uma regra do algoritmo (G) gerou um custo pago pelo entregador (S). A crise deu voz a quem não tinha."},
  {g:2, t:"O inquérito", x:"A subprefeitura nunca respondeu ao abaixo-assinado, então os moradores procuraram o Ministério Público. Um promotor abre um inquérito sobre o ruído noturno e o uso das calçadas pelo galpão da Ligeira, e um vereador do bairro leva o caso à Câmara Municipal. Se o inquérito prosperar, o galpão pode perder a autorização para funcionar de madrugada, justamente o turno em que se prepara <strong>60% das entregas</strong> do dia seguinte.",
   m:"Moradores: de baixo para alto poder.", d:"Quem não tem poder busca quem tem. Ignorar o abaixo-assinado saiu caro. É a Braskem em miniatura."},
- {g:3, t:"A meta da Lume", x:"A Lume Varejo anuncia um compromisso público: até o fim de 2027, todas as suas entregas na capital serão feitas com <strong>emissão zero</strong>. Os fornecedores de entrega terão seis meses para apresentar um plano. Das três empresas que atendem a Lume, a Ligeira é a única que já tem vans elétricas, mas elas fazem só <strong>15% das suas entregas</strong>; o resto é feito de moto, a combustão. O diretor de logística da Lume liga para Beatriz: “Se vocês chegarem lá primeiro, o volume é de vocês.”",
-  m:"Lume: de baixo para alto interesse.", d:"O ESG como oportunidade, não como custo. Reduzir a externalidade (E) pode dar mais lucro. A VoltFrota ganha peso."},
+ {g:3, t:"A Entrega Limpa", x:"A Lume Varejo lança uma campanha nova: na tela de pagamento do site, o cliente escolhe entre a <strong>Entrega Limpa</strong>, feita em veículo elétrico, e a entrega expressa, mais rápida. A Entrega Limpa só aparece para quem mora em bairro onde há quem a faça, e quem a faz é uma das outras duas empresas de logística que atendem a Lume, que começou a trocar a frota no ano passado. Em março eram três bairros, e a Ligeira deixou de fazer <strong>120 entregas por dia</strong>. Em abril foram sete bairros e <strong>260 entregas por dia</strong>. A Lume não pediu nada à Ligeira.",
+  m:"Lume: de baixo para alto interesse.", d:"A pressão ambiental chega pelo cliente final, não pelo regulador. Reduzir a externalidade (E) deixa de ser custo e vira condição de permanecer na carteira."},
  {g:4, t:"O gigante", x:"Uma grande plataforma de comércio eletrônico lança um serviço de entrega no mesmo dia para pequenos lojistas da capital, com preços <strong>20% menores</strong> que os da Ligeira e seis meses de frete grátis para quem aderir. Em duas semanas, <strong>cinco lojistas</strong> da carteira da Ligeira avisam que vão testar o serviço novo.",
   m:"Lojistas: de alto para baixo interesse.", d:"O interesse também diminui. Com alternativas, os lojistas dependem menos, e a Ligeira fica mais dependente da Lume."},
  {g:5, t:"A Black Friday", x:"Faltam três semanas para a Black Friday, e a Ligeira prevê o <strong>triplo do volume</strong> normal. O e-commerce inteiro da cidade está contratando para galpões, e as agências de trabalho temporário não têm mais gente para oferecer. Numa troca de turno, os <strong>24 empregados</strong> do galpão entregam a Beatriz uma carta assinada por todos: pedem adicional noturno maior e um intervalo de descanso nos turnos de pico. “Se não der, não dá para garantir a Black Friday”, diz o líder de turno.",
@@ -739,10 +1007,10 @@ const DILEMAS = [
 
  { n:3, titulo:"A conversa que Diego não consegue ter",
    ctx:[
-    "<strong>Renato Tavares</strong> é diretor comercial da VoltFrota e amigo de Diego desde os tempos da Poli-USP. Foi ele quem reservou para a Ligeira as primeiras vans elétricas, quando a fila era de meses e ninguém apostava numa empresa daquele tamanho. E foi ele quem segurou por 90 dias o pagamento da Ligeira durante a pandemia, quando qualquer outra locadora teria rompido o contrato. Anos depois, numa mesa de bar, Renato confessou a Diego que tinha feito aquilo sem autorização da diretoria dele e que, se descobrissem, perderia o emprego.",
+    "<strong>Renato Tavares</strong> é diretor comercial da Bandeirante Frotas e amigo de Diego desde os tempos da Poli-USP. Foi ele quem reservou para a Ligeira as primeiras vans, quando a fila era de meses e ninguém apostava numa empresa daquele tamanho. E foi ele quem segurou por 90 dias o pagamento da Ligeira durante a pandemia, quando qualquer outra locadora teria rompido o contrato. Anos depois, numa mesa de bar, Renato confessou a Diego que tinha feito aquilo sem autorização da diretoria dele e que, se descobrissem, perderia o emprego.",
     "Na semana passada, Renato mandou a proposta de renovação. Beatriz a analisou linha por linha: reajuste de 18% ao ano pelos próximos três anos e uma cláusula de exclusividade de cinco anos (valores ilustrativos). Na planilha dela, a conta era simples: a margem das entregas volumosas desapareceria no segundo ano. A Ligeira cresceria em volume e perderia em caixa.",
-    "<span class=\"say\">“Você precisa recusar e renegociar do zero”</span>, disse Beatriz. Diego sabe que ela está certa. Sabe também que Renato escreveu aquela proposta acreditando que a amizade garantiria o sim. E a VoltFrota é uma das poucas empresas da região com vans elétricas e recarga incluída: se Renato se magoar e redirecionar a carteira, a Ligeira fica sem alternativa. Beatriz embarca amanhã cedo para um cliente no interior. O almoço com Renato, às 14h, é de Diego, e ele estará sozinho.",
-    "Tiago ligou às dez da noite. <span class=\"say\">“Escuta. Aquele atraso de 90 dias na pandemia, o Renato segurou sem a diretoria dele saber. Você me contou, lembra? Então amanhã você chega e diz, com calma, que se o reajuste não cair pela metade e a exclusividade não sair, essa história pode chegar à diretoria da VoltFrota. Ele baixa na hora. Antes, o jurídico manda uma carta dizendo que a gente tem proposta de outra locadora. Não tem, mas ele não sabe.”</span>",
+    "<span class=\"say\">“Você precisa recusar e renegociar do zero”</span>, disse Beatriz. Diego sabe que ela está certa. Sabe também que Renato escreveu aquela proposta acreditando que a amizade garantiria o sim. E a Bandeirante é uma das poucas locadoras da região que trabalha nas condições de pagamento que a Ligeira consegue sustentar: se Renato se magoar e redirecionar a carteira, a Ligeira fica sem alternativa. Beatriz embarca amanhã cedo para um cliente no interior. O almoço com Renato, às 14h, é de Diego, e ele estará sozinho.",
+    "Tiago ligou às dez da noite. <span class=\"say\">“Escuta. Aquele atraso de 90 dias na pandemia, o Renato segurou sem a diretoria dele saber. Você me contou, lembra? Então amanhã você chega e diz, com calma, que se o reajuste não cair pela metade e a exclusividade não sair, essa história pode chegar à diretoria da Bandeirante. Ele baixa na hora. Antes, o jurídico manda uma carta dizendo que a gente tem proposta de outra locadora. Não tem, mas ele não sabe.”</span>",
     "<span class=\"say\">“Isso é chantagem, Tiago.”</span> <span class=\"say\">“É negociação. Ele montou um contrato para quebrar a gente contando com a amizade. Quem usou a amizade primeiro foi ele. Eu só estou te ensinando a jogar o mesmo jogo.”</span>",
     "Diego desligou e ficou olhando o celular. Ainda tinha o número do Renato salvo com um apelido da faculdade. A última mensagem dele, de manhã, dizia: “Amanhã a gente comemora a renovação 🍻.”"
    ]},
@@ -824,11 +1092,12 @@ function renderAula2(){ renderGroups2(); renderDilema(); }
 function route(){
   const v = location.hash.replace("#","") || "inicio";
   const ch2 = ["capitulo-2","grupo-2","dilema"];
+  const ch3 = ["capitulo-3","balizas","gabarito","segredo"];
   const ch1 = ["stakeholders","grupo","rodada-1","rodada-2","rodada-3","resumo","professor"];
-  const view = ch2.includes(v) ? "capitulo-2" : (v.startsWith("capitulo-1") || ch1.includes(v)) ? "capitulo-1" : "inicio";
+  const view = ch3.includes(v) ? "capitulo-3" : ch2.includes(v) ? "capitulo-2" : (v.startsWith("capitulo-1") || ch1.includes(v)) ? "capitulo-1" : "inicio";
   document.querySelectorAll(".view").forEach(el=>el.classList.toggle("hidden", el.id!==`view-${view}`));
   document.querySelectorAll(".top nav a").forEach(a=>{ if(a.dataset.view===view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
-  if(v==="inicio"||v==="capitulo-1"||v==="capitulo-2") window.scrollTo(0,0); else { const t=document.getElementById(v); if(t) t.scrollIntoView(); }
+  if(v==="inicio"||v==="capitulo-1"||v==="capitulo-2"||v==="capitulo-3") window.scrollTo(0,0); else { const t=document.getElementById(v); if(t) t.scrollIntoView(); }
 }
 window.addEventListener("hashchange", route);
 
@@ -852,6 +1121,39 @@ function renderAll(){
 buildMatrix("r1"); buildMatrix("r3");
 renderAll();
 renderAula2();
+
+/* ---------- capítulo 3: trancas ---------- */
+/* Para trocar os códigos, altere as duas linhas abaixo. */
+const COD_GABARITO = "LIGEIRA2026";
+const COD_SEGREDO  = "LUME2027";
+
+function tranca3(idBotao, idCaixa, idCampo, idErro, idConteudo, codigo){
+  const b = document.getElementById(idBotao);
+  const c = document.getElementById(idCaixa);
+  const i = document.getElementById(idCampo);
+  const e = document.getElementById(idErro);
+  const k = document.getElementById(idConteudo);
+  if(!b || !c || !i || !e || !k) return;
+  b.addEventListener("click", ()=>{
+    c.classList.toggle("hidden");
+    if(!c.classList.contains("hidden")) i.focus();
+  });
+  const tentar = ()=>{
+    if(i.value.trim().toUpperCase() === codigo){
+      k.classList.remove("hidden");
+      c.classList.add("hidden");
+      b.classList.add("hidden");
+      e.textContent = "";
+    } else {
+      e.textContent = "Código incorreto. Confira com o professor.";
+    }
+  };
+  c.querySelector("button").addEventListener("click", tentar);
+  i.addEventListener("keydown", ev=>{ if(ev.key==="Enter") tentar(); });
+}
+tranca3("abrir-gab","lock-gab","cod-gab","err-gab","gabarito-3", COD_GABARITO);
+tranca3("abrir-seg","lock-seg","cod-seg","err-seg","segredo-3", COD_SEGREDO);
+
 route();
 </script>
 </body>
