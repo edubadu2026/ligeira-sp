@@ -264,6 +264,43 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
 .chap-head.c4::before{display:none}
 .mes4{font-family:var(--sans);font-weight:700;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);margin:0 0 .3rem}
 .dilema .pergunta4{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:750;line-height:1.15;border-left:6px solid var(--yellow);padding:.3rem 0 .3rem 1rem;margin:2.2rem 0 0}
+.chap-head.c5{background-image:none}
+.chap-head.c5::before{display:none}
+.indice5{display:flex;flex-wrap:wrap;gap:.5rem;font-family:var(--sans);margin:1.2rem 0 2rem;padding:0;list-style:none}
+.indice5 a{display:inline-block;border:2px solid var(--ink);padding:.45rem .9rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:.95rem;background:#fff}
+.indice5 a:hover{background:var(--yellow)}
+.props5{display:flex;flex-direction:column;gap:2rem;margin-top:1.4rem;font-family:var(--sans)}
+.prop5{background:#fff;border-top:6px solid var(--ink);padding:1.2rem 1.4rem 1.5rem}
+.prop5 .pn{font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);margin:0}
+.prop5 h3{font-family:var(--serif);font-weight:750;font-size:1.7rem;line-height:1.1;margin:.2rem 0 .5rem}
+.prop5 .resumo{font-family:var(--serif);font-size:1.05rem;line-height:1.5;margin:0 0 1rem;max-width:70ch}
+.prop5 .fatos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.8rem 1.4rem;margin:0 0 1.2rem;font-size:.95rem}
+.prop5 .fatos div b{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.1rem}
+.prop5 .pilar{margin:1.1rem 0 0}
+.prop5 .it{display:grid;grid-template-columns:1fr 5.4rem 5.4rem;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--paper-2);font-size:.95rem;line-height:1.35}
+.prop5 .it.h{border-bottom:2px solid var(--ink);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding-top:.6rem}
+.prop5 .it.h span:first-child{font-size:.95rem;letter-spacing:.02em}
+.prop5 .it span:nth-child(n+2){text-align:right;white-space:nowrap}
+.prop5 .it.sub{font-weight:700;border-bottom:none}
+.prop5 .tot{background:var(--paper-2);padding:.2rem .8rem;margin-top:1rem}
+.prop5 .tot .it{font-weight:700;border-bottom:none;font-size:1.02rem}
+.prop5 .prob{margin:.5rem 0 .3rem;font-family:var(--serif);font-size:.98rem;line-height:1.4;color:var(--ink-2)}
+.prop5 .nao{margin:1rem 0 0;font-size:.92rem;color:var(--ink-2)}
+@media (max-width:640px){
+ .prop5{padding:1rem 1rem 1.2rem}
+ .prop5 .it{grid-template-columns:1fr 1fr}
+ .prop5 .it span:first-child{grid-column:1/-1}
+ .prop5 .it span:nth-child(n+2){text-align:left}
+ .prop5 .it span[data-l]::before{content:attr(data-l) ": ";font-weight:400;color:var(--ink-2)}
+ .prop5 .it.h span:nth-child(n+2){display:none}
+}
+.prop5.sel{border-top-color:var(--yellow);outline:3px solid var(--yellow)}
+.lado{overflow-x:auto;margin-top:2rem;font-family:var(--sans)}
+.lado h3{font-family:var(--serif);font-weight:750;font-size:1.5rem;margin:0 0 .6rem}
+.lado table{border-collapse:collapse;width:100%;min-width:560px;background:#fff;font-size:.93rem}
+.lado th,.lado td{border-bottom:1px solid var(--paper-2);padding:.5rem .7rem;text-align:left;vertical-align:top}
+.lado thead th{background:var(--ink);color:#fff}
+.lado tbody th{width:22%}
 </style>
 </head>
 <body>
@@ -277,7 +314,7 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
       <a href="#capitulo-2" data-view="capitulo-2">Cap. 2: Valores</a>
       <a href="#capitulo-3" data-view="capitulo-3">Cap. 3: O E</a>
       <a href="#capitulo-4" data-view="capitulo-4">Cap. 4: O S</a>
-      <span>Cap. 5: O G</span>
+      <a href="#capitulo-5" data-view="capitulo-5">Cap. 5: O G</a>
     </nav>
   </div>
 </header>
@@ -323,7 +360,7 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
         <li class="open"><span class="cn">Aula 2, Valores</span><a class="ct" href="#capitulo-2">Os fundamentos do ESG</a></li>
         <li class="open"><span class="cn">Aula 3, O E do ESG</span><a class="ct" href="#capitulo-3">O desafio ambiental</a></li>
         <li class="open"><span class="cn">Aula 4, O S do ESG</span><a class="ct" href="#capitulo-4">O desafio social</a></li>
-        <li><span class="cn">Aula 5, O G do ESG</span><span class="ct soon">Em breve</span></li>
+        <li class="open"><span class="cn">Aula 5, O G do ESG</span><a class="ct" href="#capitulo-5">O desafio da governança</a></li>
       </ol>
       <p class="note">A Ligeira e todos os seus personagens são fictícios. Os dados sobre a cidade e o setor são ilustrativos.</p>
     </div>
@@ -762,6 +799,46 @@ footer .sig{font-family:var(--serif);font-size:1.2rem;font-style:italic}
   </section>
 </div>
 
+<!-- =================== CAPÍTULO 5 =================== -->
+<div id="view-capitulo-5" class="view hidden">
+  <section class="chap-head c5">
+    <div class="in">
+      <p class="num">Capítulo 5, Aula 5: O G do ESG</p>
+      <h1>O desafio da governança</h1>
+    </div>
+  </section>
+
+  <section class="section" id="retrospectiva-5">
+    <div class="prose">
+      <div id="retro5"></div>
+    </div>
+  </section>
+
+  <section class="section" id="propostas-5">
+    <div class="round">
+      <div class="round-head"><h2>As três propostas</h2><div id="intro-props5"></div></div>
+      <div class="props5" id="props5"></div>
+    </div>
+  </section>
+
+  <section class="section" id="grupo-5">
+    <div class="round">
+      <div class="round-head"><h2>Qual é o seu grupo?</h2></div>
+      <div class="groups" id="groups5"></div>
+      <p class="gnow" id="gnow5" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div id="decisao5-locked" class="round"><p class="locked-msg">Escolham o grupo acima para ver a tarefa.</p></div>
+  <section class="section hidden" id="tarefa-5">
+    <div class="round" id="tarefa5-area"></div>
+  </section>
+
+  <section class="section">
+    <div class="prose"><p class="note">A Ligeira, as consultorias e todos os personagens são fictícios. Os valores em reais, os percentuais e os prazos deste capítulo são ilustrativos.</p></div>
+  </section>
+</div>
+
 </main>
 
 <footer>
@@ -1136,11 +1213,12 @@ function route(){
   const ch2 = ["capitulo-2","grupo-2","dilema"];
   const ch3 = ["capitulo-3","balizas","gabarito","segredo"];
   const ch4 = ["capitulo-4","grupo-4","decisao-4"];
+  const ch5 = ["capitulo-5","retrospectiva-5","propostas-5","grupo-5","tarefa-5"];
   const ch1 = ["stakeholders","grupo","rodada-1","rodada-2","rodada-3","resumo","professor"];
-  const view = ch4.includes(v) ? "capitulo-4" : ch3.includes(v) ? "capitulo-3" : ch2.includes(v) ? "capitulo-2" : (v.startsWith("capitulo-1") || ch1.includes(v)) ? "capitulo-1" : "inicio";
+  const view = ch5.includes(v) ? "capitulo-5" : ch4.includes(v) ? "capitulo-4" : ch3.includes(v) ? "capitulo-3" : ch2.includes(v) ? "capitulo-2" : (v.startsWith("capitulo-1") || ch1.includes(v)) ? "capitulo-1" : "inicio";
   document.querySelectorAll(".view").forEach(el=>el.classList.toggle("hidden", el.id!==`view-${view}`));
   document.querySelectorAll(".top nav a").forEach(a=>{ if(a.dataset.view===view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
-  if(v==="inicio"||v==="capitulo-1"||v==="capitulo-2"||v==="capitulo-3"||v==="capitulo-4") window.scrollTo(0,0); else { const t=document.getElementById(v); if(t) t.scrollIntoView(); }
+  if(v==="inicio"||v==="capitulo-1"||v==="capitulo-2"||v==="capitulo-3"||v==="capitulo-4"||v==="capitulo-5") window.scrollTo(0,0); else { const t=document.getElementById(v); if(t) t.scrollIntoView(); }
 }
 window.addEventListener("hashchange", route);
 
@@ -1284,6 +1362,180 @@ function renderDilema4(){
 renderGroups4();
 renderDilema4();
 
+/* =====================================================================
+   CAPÍTULO 5 · AULA 5 · O G DO ESG
+   Consultorias, personagens e valores em reais são fictícios ou ilustrativos.
+   ===================================================================== */
+const BASE5 = "ligeira-modulo-5";
+const NGROUPS5 = 3;
+
+const RETRO5 = [
+  `Num fim de tarde, Beatriz, Diego e Tiago pararam para olhar para trás. Nos últimos meses, a Ligeira viu entregadores se acidentarem e adoecerem, vizinhos pedirem para dormir, um cliente migrar aos poucos para a entrega elétrica e uma rotatividade que não para. Cada crise foi resolvida na hora, por quem estava na sala e tinha pressa. Ninguém sabia dizer, antes de cada decisão, quem decide o quê e como.`,
+  `Diego resumiu. <span class="say">“Não falta boa vontade. Falta regra escrita para cada área.”</span>`,
+  `Os três decidiram contratar uma consultoria ESG para escrever essas regras e pediram cotação ao mercado. Voltaram três propostas, cada uma organizada em governança, meio ambiente e relação com as pessoas.`
+];
+const INTRO5 = [
+  `A Ligeira fatura R$ 9,5 milhões por ano e tem R$ 800 mil em caixa. O preço de cada proposta inclui tudo o que ela entrega, inclusive os profissionais externos que contrata. Os percentuais são calculados sobre o faturamento. Todos os valores são ilustrativos.`
+];
+
+const FAT5 = 9500; /* faturamento em R$ mil */
+
+const PROB5 = {
+  "Governança":"Decisões tomadas na hora, sem regra escrita por área, e um acordo de sócios que não diz com clareza como se decide.",
+  "Meio ambiente":"Frota 100% a combustão e um cliente que responde por 40% da receita migrando, bairro a bairro, para a entrega elétrica.",
+  "Pessoas":"Entregadores sem limite de jornada e sob a pressão do cronômetro, sem apoio durante o trabalho, e rotatividade de 15% ao mês."
+};
+
+/* itens: [descrição, ano 1, ano 2 em diante], em R$ mil */
+const P5 = [
+  { n:1, nome:"Alicerce Consultoria", tag:"Proposta básica",
+    resumo:"Escreve as cinco políticas e revisa os documentos dos sócios. A execução fica com a equipe da Ligeira.",
+    prazo:"3 meses", horas:"60 horas dos sócios e gestores no primeiro ano (5 por mês)", pagto:"2 parcelas, na assinatura e na entrega",
+    quem:"A consultoria entrega os textos. Beatriz e Diego implantam.",
+    promessa:"As cinco políticas escritas e publicadas em 90 dias.",
+    pilares:[
+      { nome:"Governança", itens:[
+        ["Cinco políticas escritas, uma por área (contratação e remuneração, decisão entre sócios, finanças e alçadas, compras e conflito de interesses, e tecnologia e propriedade intelectual)",32,0],
+        ["Revisão do contrato social e do acordo de sócios por advogado societário, com as regras de decisão e de saída",16,0],
+        ["Treinamento único de 4 horas para sócios e gestores nas cinco políticas",12,0],
+        ["Revisão anual das políticas",0,12] ]},
+      { nome:"Meio ambiente", itens:[
+        ["Inventário de emissões dos escopos 1 e 2 (galpão, escritório e energia)",10,4],
+        ["Mapa dos bairros da Lume com Entrega Limpa e levantamento de fornecedores de veículos elétricos",10,0] ]},
+      { nome:"Pessoas", itens:[
+        ["Política de jornada máxima no aplicativo, com alerta ao entregador, configurada pela equipe de Diego",7,0],
+        ["Pesquisa única de escuta com entregadores e empregados",8,0] ]}
+    ],
+    nao:["treinamento contínuo","auditoria","veículos elétricos","pontos de apoio"] },
+
+  { n:2, nome:"Meridiano ESG", tag:"Proposta intermediária",
+    resumo:"Escreve as cinco políticas com manual e fluxos de aprovação, mede as emissões da operação inteira, testa veículos elétricos num bairro e revisa as regras que o aplicativo impõe a quem entrega.",
+    prazo:"6 meses de implantação e mais 12 de acompanhamento", horas:"240 horas dos sócios e gestores no primeiro ano (20 por mês)", pagto:"12 parcelas mensais",
+    quem:"A consultoria coordena a implantação, com um gestor da Ligeira responsável por cada frente.",
+    promessa:"Rotatividade de entregadores de 15% para 12% ao mês em 12 meses.",
+    pilares:[
+      { nome:"Governança", itens:[
+        ["Cinco políticas escritas, com manual e fluxos de aprovação",34,10],
+        ["Matriz de alçadas (quem aprova até qual valor), implantada na planilha financeira",6,0],
+        ["Revisão e redação formal do contrato social e do acordo de sócios, com as regras de decisão e de saída",15,0] ]},
+      { nome:"Meio ambiente", itens:[
+        ["Inventário de emissões dos escopos 1, 2 e 3, incluindo a frota terceirizada",20,12],
+        ["Piloto de 60 dias com 10 bicicletas elétricas de carga em um bairro da Lume (locação, seguro, recarga e medição)",25,0],
+        ["Plano de transição da frota, com metas por bairro",15,0] ]},
+      { nome:"Pessoas", itens:[
+        ["Política de jornada máxima, com bloqueio no aplicativo e regra de transição de renda",10,0],
+        ["Revisão do cronômetro e do sistema de avaliação do aplicativo",12,0],
+        ["Psicóloga para o galpão, 10 horas por semana",24,24],
+        ["Projeto de pontos de apoio para entregadores, com cotação de imóveis",8,0],
+        ["Treinamento de 16 horas para líderes e gestores",8,4],
+        ["Pesquisa semestral de escuta com entregadores",13,13] ]}
+    ],
+    nao:["veículos elétricos além do piloto","aluguel, reforma e operação dos pontos de apoio","o efeito do bloqueio de jornada e da revisão do cronômetro sobre a receita e sobre o bônus da Lume"] },
+
+  { n:3, nome:"Prisma Governança e Impacto", tag:"Proposta premium",
+    resumo:"Prepara a Ligeira para receber um investidor institucional ou, mais adiante, abrir o capital. Organiza as contas, cria um conselho consultivo, monta o dossiê para a auditoria de um investidor e leva meio ambiente e pessoas ao essencial.",
+    prazo:"12 meses", horas:"360 horas dos sócios e gestores no primeiro ano (30 por mês)", pagto:"12 parcelas mensais",
+    quem:"Equipe da consultoria no galpão, com reunião quinzenal com Beatriz, Diego e Tiago.",
+    promessa:"Dossiê de documentos para a auditoria de um investidor (contratos, políticas, contas auditadas e inventário de emissões verificado) pronto em 12 meses.",
+    pilares:[
+      { nome:"Governança", itens:[
+        ["Oito políticas escritas, com manual, fluxos e auditoria interna. As cinco da aula e mais três (segurança do entregador, meio ambiente e proteção de dados pessoais)",40,12],
+        ["Reescrita do contrato social e do acordo de sócios, com regras para a entrada de um investidor",25,0],
+        ["Organização financeira para auditoria (plano de contas, fechamento mensal e orçamento anual)",20,0],
+        ["Diretor financeiro de meio período, um dia por semana",48,48],
+        ["Auditoria externa anual das demonstrações financeiras",30,30],
+        ["Conselho consultivo com dois membros externos, sem voto, reunião mensal e parecer sobre decisões acima de R$ 300 mil, registrado em ata",36,36],
+        ["Mapa de riscos e controles internos",15,5],
+        ["Dossiê de documentos para a auditoria de um investidor",20,8] ]},
+      { nome:"Meio ambiente", itens:[
+        ["Inventário de emissões dos escopos 1, 2 e 3, com verificação externa",26,12],
+        ["Piloto de 90 dias com 20 bicicletas elétricas de carga em dois bairros da Lume (locação, seguro, recarga e medição)",42,0],
+        ["Plano de transição da frota e contrato-modelo de locação para negociar com a Lume",12,0],
+        ["Relatório anual de sustentabilidade, sem verificação externa",6,6] ]},
+      { nome:"Pessoas", itens:[
+        ["Política de jornada máxima, com bloqueio no aplicativo e regra de transição de renda",10,0],
+        ["Revisão completa do aplicativo (cronômetro, avaliação e distribuição de corridas)",22,0],
+        ["Pesquisa semestral de escuta com entregadores",12,12],
+        ["Treinamento de 16 horas para líderes e gestores",8,4],
+        ["Projeto de pontos de apoio para entregadores",8,0] ]}
+    ],
+    nao:["veículos elétricos além do piloto","aluguel, reforma e operação dos pontos de apoio","o efeito do bloqueio de jornada e da revisão do aplicativo sobre a receita e sobre o bônus da Lume","custos jurídicos e financeiros da entrada de um investidor"] }
+];
+
+const sum5 = (it,k) => it.reduce((a,x)=>a+x[k],0);
+const tot5 = (p,k) => p.pilares.reduce((a,pl)=>a+sum5(pl.itens,k),0);
+const pct5 = v => (v/FAT5*100).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1}) + "%";
+const rs5 = v => v===0 ? "R$ 0" : `R$ ${v} mil`;
+const rp5 = v => v===0 ? "R$ 0" : `R$ ${v} mil (${pct5(v)})`;
+
+function renderTexto5(){
+  document.getElementById("retro5").innerHTML = RETRO5.map(t=>`<p>${t}</p>`).join("");
+  document.getElementById("intro-props5").innerHTML = INTRO5.map(t=>`<p>${t}</p>`).join("");
+  document.getElementById("props5").innerHTML = P5.map(p=>`<article class="prop5${group5===p.n?" sel":""}" id="prop5-${p.n}">
+    <p class="pn">Proposta ${p.n} · ${p.tag}</p>
+    <h3>${p.nome}</h3>
+    <p class="resumo">${p.resumo}</p>
+    <div class="fatos">
+      <div><b>Prazo</b>${p.prazo}</div>
+      <div><b>Tempo da equipe</b>${p.horas}</div>
+      <div><b>Pagamento</b>${p.pagto}</div>
+      <div><b>Quem executa</b>${p.quem}</div>
+      <div><b>Promessa mensurável</b>${p.promessa}</div>
+    </div>
+    ${p.pilares.map(pl=>`<div class="pilar">
+      <div class="it h"><span>${pl.nome}</span><span>Ano 1</span><span>Ano 2+</span></div>
+      <p class="prob">Problema. ${PROB5[pl.nome]}</p>
+      ${pl.itens.map(i=>`<div class="it"><span>${i[0]}</span><span data-l="Ano 1">${rs5(i[1])}</span><span data-l="Ano 2+">${rs5(i[2])}</span></div>`).join("")}
+      <div class="it sub"><span>Subtotal de ${pl.nome.toLowerCase()}</span><span data-l="Ano 1">${rs5(sum5(pl.itens,1))}</span><span data-l="Ano 2+">${rs5(sum5(pl.itens,2))}</span></div>
+    </div>`).join("")}
+    <div class="tot">
+      <div class="it"><span>Preço total</span><span data-l="Ano 1">${rs5(tot5(p,1))}</span><span data-l="Ano 2+">${rs5(tot5(p,2))}</span></div>
+      <div class="it"><span>Percentual do faturamento (R$ 9,5 milhões)</span><span data-l="Ano 1">${pct5(tot5(p,1))}</span><span data-l="Ano 2+">${pct5(tot5(p,2))}</span></div>
+    </div>
+    <p class="nao"><b>Não incluído no preço.</b> ${p.nao.join("; ")}.</p>
+  </article>`).join("") + `<div class="lado"><h3>Lado a lado</h3><table>
+    <thead><tr><th></th>${P5.map(p=>`<th>Proposta ${p.n}</th>`).join("")}</tr></thead>
+    <tbody>
+      <tr><th>Preço no ano 1</th>${P5.map(p=>`<td>${rp5(tot5(p,1))}</td>`).join("")}</tr>
+      <tr><th>Preço do ano 2 em diante</th>${P5.map(p=>`<td>${rp5(tot5(p,2))}</td>`).join("")}</tr>
+      <tr><th>Governança, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[0].itens,1))}</td>`).join("")}</tr>
+      <tr><th>Meio ambiente, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[1].itens,1))}</td>`).join("")}</tr>
+      <tr><th>Pessoas, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[2].itens,1))}</td>`).join("")}</tr>
+      <tr><th>Prazo</th>${P5.map(p=>`<td>${p.prazo}</td>`).join("")}</tr>
+      <tr><th>Tempo da equipe</th>${P5.map(p=>`<td>${p.horas}</td>`).join("")}</tr>
+      <tr><th>Pagamento</th>${P5.map(p=>`<td>${p.pagto}</td>`).join("")}</tr>
+      <tr><th>Promessa mensurável</th>${P5.map(p=>`<td>${p.promessa}</td>`).join("")}</tr>
+    </tbody></table></div>`;
+}
+
+let group5 = null;
+try{ const g = localStorage.getItem(BASE5+"-grupo"); if(g) group5 = +g; }catch(e){}
+
+function renderGroups5(){
+  const box = document.getElementById("groups5");
+  box.innerHTML = Array.from({length:NGROUPS5},(_,i)=>i+1).map(n=>`<button type="button" class="gbtn2" data-g5="${n}" aria-pressed="${group5===n}">Grupo ${n}</button>`).join("");
+  box.querySelectorAll("[data-g5]").forEach(b=>b.addEventListener("click",()=>{
+    const n=+b.dataset.g5; if(n===group5) return;
+    group5=n; try{ localStorage.setItem(BASE5+"-grupo", String(n)); }catch(e){}
+    renderGroups5(); renderTexto5(); renderTarefa5();
+    const alvo = document.getElementById("tarefa-5"); if(alvo) alvo.scrollIntoView();
+  }));
+  document.getElementById("gnow5").textContent = group5 ? `Vocês estão trabalhando como Grupo ${group5} e defendem a Proposta ${group5}.` : "";
+  document.getElementById("tarefa-5").classList.toggle("hidden", !group5);
+  document.getElementById("decisao5-locked").classList.toggle("hidden", !!group5);
+}
+
+function renderTarefa5(){
+  const area = document.getElementById("tarefa5-area");
+  if(!group5){ area.innerHTML=""; return; }
+  const p = P5[(group5-1) % P5.length];
+  area.innerHTML = `<div class="task"><p class="mes4">Grupo ${group5}</p>
+    <p><b>Vocês defendem a Proposta ${p.n}, da ${p.nome}.</b> Sua tarefa é convencer os três sócios e os outros dois grupos de que ela é a melhor escolha para a Ligeira.</p></div>`;
+}
+
+renderTexto5();
+renderGroups5();
+renderTarefa5();
 
 route();
 </script>
