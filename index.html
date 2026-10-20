@@ -1375,15 +1375,16 @@ const RETRO5 = [
   `Os três decidiram contratar uma consultoria ESG para escrever essas regras e pediram cotação ao mercado. Voltaram três propostas, cada uma organizada em governança, meio ambiente e relação com as pessoas.`
 ];
 const INTRO5 = [
-  `A Ligeira fatura R$ 9,5 milhões por ano e tem R$ 800 mil em caixa. O preço de cada proposta inclui tudo o que ela entrega, inclusive os profissionais externos que contrata. Os percentuais são calculados sobre o faturamento. Todos os valores são ilustrativos.`
+  `A Ligeira fatura R$ 9,5 milhões por ano e tem R$ 800 mil em caixa. Cada proposta enfrenta os problemas da empresa em governança, meio ambiente e pessoas, e oferece uma oportunidade que vai além deles. O preço de cada proposta inclui tudo o que ela entrega, inclusive os profissionais externos que contrata. Os percentuais são calculados sobre o faturamento. Todos os valores são ilustrativos.`
 ];
 
 const FAT5 = 9500; /* faturamento em R$ mil */
 
 const PROB5 = {
-  "Governança":"Decisões tomadas na hora, sem regra escrita por área, e um acordo de sócios que não diz com clareza como se decide.",
-  "Meio ambiente":"Frota 100% a combustão e um cliente que responde por 40% da receita migrando, bairro a bairro, para a entrega elétrica.",
-  "Pessoas":"Entregadores sem limite de jornada e sob a pressão do cronômetro, sem apoio durante o trabalho, e rotatividade de 15% ao mês."
+  "Governança":"Problema. Decisões tomadas na hora, sem regra escrita por área, e um acordo de sócios que não diz com clareza como se decide.",
+  "Meio ambiente":"Problema. Frota 100% a combustão e um cliente que responde por 40% da receita migrando, bairro a bairro, para a entrega elétrica.",
+  "Pessoas":"Problema. Entregadores sem limite de jornada e sob a pressão do cronômetro, sem apoio durante o trabalho, e rotatividade de 15% ao mês.",
+  "Oportunidade":"O que a proposta oferece além dos problemas atuais, e que pode trazer benefício ao negócio."
 };
 
 /* itens: [descrição, ano 1, ano 2 em diante], em R$ mil */
@@ -1404,7 +1405,9 @@ const P5 = [
         ["Mapa dos bairros da Lume com Entrega Limpa e levantamento de fornecedores de veículos elétricos",10,0] ]},
       { nome:"Pessoas", itens:[
         ["Política de jornada máxima no aplicativo, com alerta ao entregador, configurada pela equipe de Diego",7,0],
-        ["Pesquisa única de escuta com entregadores e empregados",8,0] ]}
+        ["Pesquisa única de escuta com entregadores e empregados",8,0] ]},
+      { nome:"Oportunidade", itens:[
+        ["Kit comercial ESG, com respostas padronizadas a questionários ESG de clientes e licitações e uma página ESG no site da Ligeira",15,3] ]}
     ],
     nao:["treinamento contínuo","auditoria","veículos elétricos","pontos de apoio"] },
 
@@ -1428,7 +1431,9 @@ const P5 = [
         ["Psicóloga para o galpão, 10 horas por semana",24,24],
         ["Projeto de pontos de apoio para entregadores, com cotação de imóveis",8,0],
         ["Treinamento de 16 horas para líderes e gestores",8,4],
-        ["Pesquisa semestral de escuta com entregadores",13,13] ]}
+        ["Pesquisa semestral de escuta com entregadores",13,13] ]},
+      { nome:"Oportunidade", itens:[
+        ["Investimento social privado na vizinhança. Programa de formação de jovens do entorno do galpão para trabalhar na triagem e nas entregas, com duas turmas por ano",30,20] ]}
     ],
     nao:["veículos elétricos além do piloto","aluguel, reforma e operação dos pontos de apoio","o efeito do bloqueio de jornada e da revisão do cronômetro sobre a receita e sobre o bônus da Lume"] },
 
@@ -1457,7 +1462,10 @@ const P5 = [
         ["Revisão completa do aplicativo (cronômetro, avaliação e distribuição de corridas)",22,0],
         ["Pesquisa semestral de escuta com entregadores",12,12],
         ["Treinamento de 16 horas para líderes e gestores",8,4],
-        ["Projeto de pontos de apoio para entregadores",8,0] ]}
+        ["Projeto de pontos de apoio para entregadores",8,0] ]},
+      { nome:"Oportunidade", itens:[
+        ["Avaliação de impacto e plano para a certificação de Empresa B",20,5],
+        ["Apoio na montagem de pedidos de crédito com taxa reduzida para a compra de veículos elétricos",15,0] ]}
     ],
     nao:["veículos elétricos além do piloto","aluguel, reforma e operação dos pontos de apoio","o efeito do bloqueio de jornada e da revisão do aplicativo sobre a receita e sobre o bônus da Lume","custos jurídicos e financeiros da entrada de um investidor"] }
 ];
@@ -1484,7 +1492,7 @@ function renderTexto5(){
     </div>
     ${p.pilares.map(pl=>`<div class="pilar">
       <div class="it h"><span>${pl.nome}</span><span>Ano 1</span><span>Ano 2+</span></div>
-      <p class="prob">Problema. ${PROB5[pl.nome]}</p>
+      <p class="prob">${PROB5[pl.nome]}</p>
       ${pl.itens.map(i=>`<div class="it"><span>${i[0]}</span><span data-l="Ano 1">${rs5(i[1])}</span><span data-l="Ano 2+">${rs5(i[2])}</span></div>`).join("")}
       <div class="it sub"><span>Subtotal de ${pl.nome.toLowerCase()}</span><span data-l="Ano 1">${rs5(sum5(pl.itens,1))}</span><span data-l="Ano 2+">${rs5(sum5(pl.itens,2))}</span></div>
     </div>`).join("")}
@@ -1501,6 +1509,7 @@ function renderTexto5(){
       <tr><th>Governança, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[0].itens,1))}</td>`).join("")}</tr>
       <tr><th>Meio ambiente, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[1].itens,1))}</td>`).join("")}</tr>
       <tr><th>Pessoas, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[2].itens,1))}</td>`).join("")}</tr>
+      <tr><th>Oportunidade, ano 1</th>${P5.map(p=>`<td>${rp5(sum5(p.pilares[3].itens,1))}</td>`).join("")}</tr>
       <tr><th>Prazo</th>${P5.map(p=>`<td>${p.prazo}</td>`).join("")}</tr>
       <tr><th>Tempo da equipe</th>${P5.map(p=>`<td>${p.horas}</td>`).join("")}</tr>
       <tr><th>Pagamento</th>${P5.map(p=>`<td>${p.pagto}</td>`).join("")}</tr>
